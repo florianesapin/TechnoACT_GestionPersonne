@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 28, 2016, 1:51:09 PM
+    Author     : floriane.sapin
+*/
+/* ajout d'une marge avec le bord de la page' */
+.panel-default{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.alert{
+    margin-left: 10px;
+    margin-right: 10px; 
+}
+
+.navbar-default .navbar-brand{
+    color: #1D63CD;
+}
+
+.login{
+   margin-left: 20px;
+   margin-right: 20px;   
+}
+
+.login1{
+    color: white;
+    font-weight: bold;
+    font-weight: 900;
+    font-size: 40px;
+    font-family: Lao UI;
+    text-shadow: 0 0 2px #000000;
+}
+
+.login2{
+   margin-left: 30px;
+   margin-right: 20px; 
+}
+
+body{
+    background-position: center center;
+    
+}
+
+.login3{
+   background-color: rgba(17,12,55,0.6);
+   border-color: transparent;
+}
+
+.login4{
+   color: white;
+   font-weight: 900;
+   font-size: 30px;
+   font-family: Lao UI;
+}
+
+.login5{
+    background-color: rgba(17,12,50,0.7);
+    font-weight: bold;
+    color: white;
+}
+
+.login6{
+    background-color: rgba(17,12,40,1);
+    font-weight: bold;
+    color: white;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<script>
+    $(document).ready(function () {
+        $("nav a").click(function () {
+            $("nav a").find(".active").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+
+
+</script>
+
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <a class="navbar-brand" href="gestionPersonne.jsp">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+                    Gestion personne</a>
+            </div>
+            <div class="col-md-4">
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 
+                    Votre score</a>
+            </div>
+            <div class="col-md-4">
+                <a class="navbar-brand" href="ServletLogout">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true" ></span>   
+                    Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
