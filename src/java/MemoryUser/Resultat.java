@@ -47,9 +47,9 @@ public class Resultat implements Comparable<Resultat>{
 
     public int compareTo(Resultat o) {
        
-        if (this.points > o.points) {
+        if (this.points < o.points) {
             return -1;
-        } else if (this.points < o.points) {
+        } else if (this.points > o.points) {
             return 1;
         } else {
             return 0;
