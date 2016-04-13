@@ -5,6 +5,7 @@ package servlets;
  * and open the template in the editor.
  */
 import DAO.PersonneDAO;
+import MemoryUser.Utilisateurs;
 import Model.Personne;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,6 +49,8 @@ public class ServletCreationPersonne extends HttpServlet {
                         // Floriane: check DAO
                         Long id = p.create(new Personne(nom, prenom, adresse, ville));
                         out.println("<p>" + id + "/" + nom + "/" + prenom + "/" + adresse + "/" + ville + "</p>");
+                                                
+                        
                         result = "ajout_suc";
                         request.setAttribute("result", result);
                         request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
@@ -60,6 +63,9 @@ public class ServletCreationPersonne extends HttpServlet {
                         request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                     }
                 }
+                
+                    // cumul des points
+                    Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 5);
                 /* TODO output your page here
                 out.println("<h1>Servlet ServletCreationPersonne at " + request.getContextPath () + "</h1>");
                  */
