@@ -120,7 +120,8 @@
         <div class="panel panel-default">
             <!--<div class="panel-heading"><p> Personne</p></div>-->
             <div class="panel-body">
-                <h1> Personne </h1>             
+                <h1> Personne </h1> 
+                <br></br>
 
                 <form method="POST" action="ServletListePersonne">
 
@@ -165,9 +166,9 @@
                     <br></br>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'">Rechercher</button>
-                            <button type="submit" class="btn btn-default" id="creer" onclick="this.form.action = 'ServletCreationPersonne'">Créer</button>
-                            <button type="submit" class="btn btn-default" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'">Mettre à jour</button>
+                            <button type="submit" class="btn btn-default" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'"><p>Rechercher</p></button>
+                            <button type="submit" class="btn btn-default" id="creer" onclick="this.form.action = 'ServletCreationPersonne'"><p>Créer</p></button>
+                            <button type="submit" class="btn btn-default" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'"><p>Mettre à jour</p></button>
                         </div>
                     </div>
 
@@ -181,12 +182,12 @@
 
                 <table class="table table-striped">
                     <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Ville</th>
-                        <th>Adresse</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <th><p>Nom</p></th>
+                        <th><p>Prenom</p></th>
+                        <th><p>Ville</p></th>
+                        <th><p>Adresse</p></th>
+                        <th><p>Modifier</p></th>
+                        <th><p>Supprimer</p></th>
                     </tr>
 
 

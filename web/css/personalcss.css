@@ -75,3 +75,25 @@ and open the template in the editor.
     font-size: 20px;
     font-family: Lao UI;
 }
+
+#userConnecte{
+    font-family: Lao UI;
+    font-size: 20px;
+    color: #1D63CD;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+#menu{
+    font-size: 21px;
+}
+
+p{
+   font-family: Lao UI; 
+}
+
+h1{
+   font-family: Lao UI;  
+}
+table{
+    font-family: Lao UI;
+}
