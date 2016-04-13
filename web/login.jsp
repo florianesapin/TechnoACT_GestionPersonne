@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login page - gestion des personnes (CRUD) </title>
     </head>
-    <body background="images/fond3.jpg" height="1920px" width="1080px">
+    <body background="images/fond3.jpg" style="background-repeat:no-repeat;background-attachment : fixed;background-size: cover;">
 
         <%-- Permet de faire disparaitre les alertes après 4 secondes--%>
         <script>
