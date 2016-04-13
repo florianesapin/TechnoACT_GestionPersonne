@@ -64,7 +64,7 @@ public class Utilisateurs {
         scores.replace(user, scoreNouveau);
     }
 
-    public List<Resultat> getClassementGeneral() {
+    public static List<Resultat> getClassementGeneral() {
         List<Resultat> classement = new LinkedList();
 
         //converti la map "scores" en une collection de "Resultat"
@@ -80,7 +80,7 @@ public class Utilisateurs {
         return classement;
     }
 
-    public List<Resultat> getPodium(String userConnecte) {
+    public static List<Resultat> getPodium(String userConnecte) {
         List<Resultat> classement = getClassementGeneral();
         List<Resultat> podium = new LinkedList();
         boolean userTrouve = false;

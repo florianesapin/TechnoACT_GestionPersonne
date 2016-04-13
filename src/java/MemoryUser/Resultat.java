@@ -18,6 +18,7 @@ public class Resultat implements Comparable<Resultat>{
     public Resultat(String user, Integer points) {
         this.user = user;
         this.points = points;
+        this.rang = 0;
 
     }
 
