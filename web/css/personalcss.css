@@ -69,3 +69,8 @@ body{
     font-weight: bold;
     color: white;
 }
+
+#confirmSupprYes{
+   font-size: 20px;
+   font-family: Lao UI;
+}
