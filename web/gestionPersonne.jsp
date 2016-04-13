@@ -30,14 +30,7 @@
             }
         </script>
 
-        
-        
-        <script language="Javascript">
-            function wait()
-            {
-            document.body.style.cursor = 'wait';
-            }
-        </script>
+       
     </head>
 
 
@@ -67,14 +60,21 @@
         <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
-            <strong>Success! </strong>La personne à été créée avec succès
+            <strong>Succès! </strong>La personne à été créée avec succès
+        </div> <%
+            }%>
+            
+        <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
+        <div class="alert_disparition alert alert-success" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Bravo! </strong>Vous venez de cumuler 5 points supplémentaires !
         </div> <%
             }%>
 
         <% if ((String) request.getAttribute("result") == "suppr_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
-            <strong>Success! </strong>La personne à été supprimée avec succès
+            <strong>Succès! </strong>La personne à été supprimée avec succès
         </div> <%
             }%>
 
@@ -104,8 +104,7 @@
         <div class="alert alert-warning" id="popup" role="alert">
 
             <strong>Warning! </strong> <p>Voulez-vous vraiment supprimer la personne <%out.println(p.getNom());%> <%out.println(p.getPrenom());%></p>
-            <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'>Oui</a>
-            <a href=''>Non</a>
+            <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'><p id="confirmSupprYes">Oui</p></a><a id="confirmSupprNo" href=''><p id="confirmSupprYes">Non</p></a>
         </div> <%
             }%>
 
@@ -204,6 +203,6 @@
             </div>
         </div>
 
-        <a href='index.jsp'>index</a>
+        <%@ include file="includes/footer.jsp" %>
     </body>
 </html>

@@ -15,7 +15,7 @@
         <title>Login page - gestion des personnes (CRUD) </title>
     </head>
     <body background="images/fond3.jpg" height="1920px" width="1080px">
-        
+
         <%-- Permet de faire disparaitre les alertes après 4 secondes--%>
         <script>
             window.setTimeout(function () {
@@ -37,16 +37,21 @@
                 </center>
                 <br>
                 <div class="panel panel-default login3">
-                    <div class="panel-body login">
-                        <div class="login4">Connexion</div>
+                    <div class="panel-body login" >
+                        <div class="login4" id="effect">Connexion</div>
                         <hr/>
                         <br>
 
-                        <% if ((String) request.getAttribute("result") == "conn_err") {%>
+                        <% if ((String) request.getAttribute("result") == "conn_err") {
+                        %>
                         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <strong>Connexion echoué! </strong> <p>Saisissez à nouveau vos données de connexion...</p>                            
-                        </div><%
+                        </div>
+                        <script>
+                            $("#effect").effect("shake");
+                        </script>
+                        <%
                         }%>
 
                         <form method="POST" action="ServletLogin" class="login2">
