@@ -13,6 +13,8 @@
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@ include file="includes/plugins.html" %>
+        <script><%@ include file="includes/scriptjs.js" %></script>
+        
         <%-- Permet de masquer mettre à jour ou créer en fonction de l''opération --%>
         <script language="Javascript">
             function masqueMAJ()
@@ -29,6 +31,31 @@
                 document.getElementById('creer').style.visibility = 'hidden';
             }
         </script>
+        
+        <%-- Permet de filtrer dans le tableau --%>
+        <script>
+            $(document).ready(function () {
+            (function ($) {
+                $('#filter').keyup(function () {
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.searchable tr').hide();
+                    $('.searchable tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+                })
+            }(jQuery));
+            });
+        </script>
+        
+        <%-- permet de trier le tableau --%>
+        <script>
+            $(document).ready(function(){
+                $(function(){
+                    $("#tablePersonne").tablesorter();
+                });
+            });
+</script>
+
 
        
     </head>
@@ -120,7 +147,8 @@
         <div class="panel panel-default">
             <!--<div class="panel-heading"><p> Personne</p></div>-->
             <div class="panel-body">
-                <h1> Personne </h1>             
+                <h1> Personne </h1> 
+                <br></br>
 
                 <form method="POST" action="ServletListePersonne">
 
@@ -165,9 +193,9 @@
                     <br></br>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'">Rechercher</button>
-                            <button type="submit" class="btn btn-default" id="creer" onclick="this.form.action = 'ServletCreationPersonne'">Créer</button>
-                            <button type="submit" class="btn btn-default" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'">Mettre à jour</button>
+                            <button type="submit" class="btn btn-default" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'"><p>Rechercher</p></button>
+                            <button type="submit" class="btn btn-default" id="creer" onclick="this.form.action = 'ServletCreationPersonne'"><p>Créer</p></button>
+                            <button type="submit" class="btn btn-default" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'"><p>Mettre à jour</p></button>
                         </div>
                     </div>
 
@@ -176,20 +204,30 @@
         </div>
 
         <div class="panel panel-default">
-            <div class="panel-heading"><h1> Liste des personnes </h1></div>
+            <div class="row">
+                <div class="panel-heading col-xs-6 col-md-4"><h1> Liste des personnes </h1> 
+                </div>
+                <div class=" input-group col-xs-12 col-md-8"> 
+                    <span class="input-group-addon">Filtre</span>
+                    <input id="filter" type="text" class="form-control" placeholder="Taper votre filtre.."></input>
+                </div>
+            </div>
+        </div>
             <div class="panel-body">
 
-                <table class="table table-striped">
+                <table id="tablePersonne" class="table table-striped avectri">
+                    <thead>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Ville</th>
-                        <th>Adresse</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <th><p>Nom</p></th>
+                        <th><p>Prenom</p></th>
+                        <th><p>Ville</p></th>
+                        <th><p>Adresse</p></th>
+                        <th><p>Modifier</p></th>
+                        <th><p>Supprimer</p></th>
                     </tr>
+                    </thead>
 
-
+                    <tbody class="searchable">
                     <% if (request.getAttribute("personnes") != null) {
                             Vector<Personne> personnes = (Vector<Personne>) request.getAttribute("personnes");
                             for (int i = 0; i < personnes.size(); i++) {
@@ -198,6 +236,7 @@
                                 out.println("<tr><td>" + p.getNom() + "</td><td>" + p.getPrenom() + "</td><td>" + p.getAdresse() + "</td><td>" + p.getVille() + "</td><td><form method=\"POST\" action=\"ServletMAJPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-default\" id=\"edition\" onClick=\"modification()\">Edition</button></form></td><td><form method=\"POST\" action=\"ServletEffacerPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-default\" id=\"supprimer\" onClick=\"modification()\">Supprimer</button></form></td></tr>");
                             }
                         }%>
+                    </tbody>
                     </form>
                 </table>
             </div>

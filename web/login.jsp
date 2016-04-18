@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login page - gestion des personnes (CRUD) </title>
     </head>
-    <body background="images/fond3.jpg" height="1920px" width="1080px">
+    <body background="images/fond3.jpg" style="background-repeat:no-repeat;background-attachment : fixed;background-size: cover;">
 
         <%-- Permet de faire disparaitre les alertes après 4 secondes--%>
         <script>
@@ -22,7 +22,7 @@
                 $(".alert_disparition").fadeTo(500, 0).slideUp(500, function () {
                     $(this).remove();
                 });
-            }, 4000);
+            }, 6000);
         </script>
 
         <div class="row">
@@ -36,9 +36,9 @@
                         </div>
                 </center>
                 <br>
-                <div class="panel panel-default login3">
-                    <div class="panel-body login" >
-                        <div class="login4" id="effect">Connexion</div>
+                <div class="panel panel-default login3 effect">
+                    <div class="panel-body login">
+                        <div class="login4">Connexion</div>
                         <hr/>
                         <br>
 
@@ -48,11 +48,8 @@
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                             <strong>Connexion echoué! </strong> <p>Saisissez à nouveau vos données de connexion...</p>                            
                         </div>
-                        <script>
-                            $("#effect").effect("shake");
-                        </script>
                         <%
-                        }%>
+                            }%>
 
                         <form method="POST" action="ServletLogin" class="login2">
                             <div class="input-group">
@@ -75,6 +72,13 @@
                             </center>
                         </form>
                     </div>
+                    <% if ((String) request.getAttribute("result") == "conn_err") {
+                    %>
+                    <script>
+                        $(".effect").effect("shake");
+                    </script>
+                    <%
+                            }%>
                 </div>
             </div>
 
