@@ -147,9 +147,9 @@
                     <br></br>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'"><p>Rechercher</p></button>
-                            <button type="submit" class="btn btn-default" id="creer" onclick="this.form.action = 'ServletCreationPersonne'"><p>Créer</p></button>
-                            <button type="submit" class="btn btn-default" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'"><p>Mettre à jour</p></button>
+                            <button type="submit" class="btn btn-warning btn-largeur" id="rechercher" onclick="document.body.style.cursor = 'wait';" onclick="this.form.action = 'ServletListePersonne'"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button type="submit" class="btn btn-success btn-largeur" id="creer" onclick="this.form.action = 'ServletCreationPersonne'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                            <button type="submit" class="btn btn-info btn-largeur" id="maj" onclick="this.form.action = 'ServletFaireMAJPersonne'"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
                         </div>
                     </div>
 
@@ -189,7 +189,7 @@
                             for (int i = 0; i < personnes.size(); i++) {
                                 Personne p = personnes.elementAt(i);
 
-                                out.println("<tr><td>" + p.getNom() + "</td><td>" + p.getPrenom() + "</td><td>" + p.getAdresse() + "</td><td>" + p.getVille() + "</td><td><form method=\"POST\" action=\"ServletMAJPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-default\" id=\"edition\" onClick=\"modification()\">Edition</button></form></td><td><form method=\"POST\" action=\"ServletEffacerPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-default\" id=\"supprimer\" onClick=\"modification()\">Supprimer</button></form></td></tr>");
+                                out.println("<tr><td>" + p.getNom() + "</td><td>" + p.getPrenom() + "</td><td>" + p.getAdresse() + "</td><td>" + p.getVille() + "</td><td><form method=\"POST\" action=\"ServletMAJPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-info btn-xs\" id=\"edition\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></button></form></td><td><form method=\"POST\" action=\"ServletEffacerPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-danger btn-xs\" id=\"supprimer\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button></form></td></tr>");
                             }
                         }%>
                     </tbody>

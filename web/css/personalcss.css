@@ -124,6 +124,10 @@ table{
   margin-right: auto;
   text-align: center;
 }
+
+.btn-largeur{
+    width: 80px;
+}
 #divfilter{
 margin-top: 25px;
 width: 500px;

@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
-    Created on : 6 janv. 2010, 14:19:14
-    Author     : termine
+    Modified on : 23 mars 2016
+    Author     : steven.habegger
 --%>
 
 <%@ include file="includes/plugins.html" %>
