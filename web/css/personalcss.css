@@ -116,3 +116,11 @@ table{
   border-right: 5px solid transparent;
   border-top: 5px solid black;
 }
+
+.center-block {
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
