@@ -22,9 +22,15 @@
 
         <%@ include file="includes/menu.html" %>
 
-        <div class="page-header panel-default">
-            <h1><font color="White">Score - Gestion personne</font></h1>
+        <br/>
+
+        <div>
+            <center>
+                <img src="images/score2.png" height="70px" width="460">
+            </center>
         </div>
+        <br/>
+        <br/>
 
         <% String username = request.getSession(true).getAttribute("username").toString();
             List<Resultat> podium = Utilisateurs.getPodium(username);
@@ -59,14 +65,14 @@
                 }
             }
         %>
-        
+
         <div class="row col-md-12">
-          <div>
-            <h3><font color="White">Pour augmenter votre score:</font></h3>
-            <p><font color="White">Créer une personne</font><p>
-            <p><font color="White">Modifier une personne</font><p>
+            <div>
+                <h3><font color="White">Pour augmenter votre score:</font></h3>
+                <p><font color="White">Créer une personne</font><p>
+                <p><font color="White">Modifier une personne</font><p>
+            </div>
         </div>
-       </div>
 
     </body>
 </html>
