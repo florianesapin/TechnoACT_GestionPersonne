@@ -124,3 +124,7 @@ table{
   margin-right: auto;
   text-align: center;
 }
+
+.btn-largeur{
+    width: 80px;
+}
