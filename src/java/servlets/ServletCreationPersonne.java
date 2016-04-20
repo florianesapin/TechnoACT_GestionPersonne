@@ -59,7 +59,7 @@ public class ServletCreationPersonne extends HttpServlet {
                     } else {
                         out.println("<p>nom et prenom ne doivent pas etre null !!</p>");
                         result = "ajout_fail";
-                        request.setAttribute("result_ajout", result);
+                        request.setAttribute("result", result);
                         request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                     }
                 }

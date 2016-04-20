@@ -43,6 +43,13 @@
             <strong>Bravo! </strong>Vous venez de cumuler 5 points supplémentaires !
         </div> <%
             }%>
+            
+        <% if ((String) request.getAttribute("result") == "ajout_fail") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans prénom ni nom
+        </div><%
+        }%>
 
         <% if ((String) request.getAttribute("result") == "suppr_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">

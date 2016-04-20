@@ -8,6 +8,7 @@
   // Tri dynamique de tableau HTML
   // Auteur : Copyright © 2015 - Django Blais
   // Source : http://trucsweb.com/tutoriels/Javascript/tableau-tri/
+  // Modifier et adpaté par nos soins!
   // Sous licence du MIT.
   function twInitTableau() {
     // Initialise chaque tableau de classe « avectri »
@@ -18,7 +19,7 @@
   	  // Un picto flèche, et deux variable data-*
   	  // - Le sens du tri (0 ou 1)
   	  // - Le numéro de la colonne
-      //[].forEach.call( oEntete.querySelectorAll("th"), function(oTh) {
+
       [].forEach.call( oEntete.getElementsByClassName("thtri"), function(oTh) {
         oTh.addEventListener("click", twTriTableau, false);
         oTh.setAttribute("data-pos", nI);
@@ -47,6 +48,7 @@
       document.addEventListener("DOMContentLoaded", maFonction);
     }
   }
+  
   twPret(twInit);
 
   function twTriTableau() {
@@ -86,7 +88,7 @@
     // Tri local (pour support utf-8)
     function compareLocale(a, b) {return a[nIndex-1].localeCompare(b[nIndex-1]);}
     // Renverse la matrice dans le cas d’un tri descendant
-    if (nBoolDir===0) aColonne.reverse();
+    if (nBoolDir==="0") aColonne.reverse();
     
     // Construit les colonne du nouveau tableau
     for(i = 0; i < nNbrLigne; i++){
@@ -97,12 +99,7 @@
     oTbody.innerHTML = "<tr>"+aColonne.join("</tr><tr>")+"</tr>";
   }
   
-//Permet de trier le tableau
- $(document).ready(function(){
-    $(function(){
-        $("#tablePersonne").tablesorter();
-    });
-});
+
 
 
 //Permet de filtrer
