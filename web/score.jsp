@@ -22,13 +22,19 @@
 
         <%@ include file="includes/menu.html" %>
 
-        <div class="page-header panel-default">
-            <h1><font color="White">Score - Gestion personne</font></h1>
+        <br/>
+
+        <div>
+            <center>
+                <img src="images/score2.png" height="70px" width="460">
+            </center>
         </div>
+        <br/>
+        <br/>
 
         <% String username = request.getSession(true).getAttribute("username").toString();
             List<Resultat> podium = Utilisateurs.getPodium(username);
-
+            
             if (podium != null) {
                 for (Resultat resultat : podium) {
                     out.println("<div class=\"col-sm-4\">");
@@ -41,32 +47,55 @@
                     }
 
                     out.println("<div class=\"panel-heading\">");
-
+                    
+                    
                     if (resultat.getRang() != 0) {
-                        out.println("<h2>" + "Rang : " + resultat.getRang() + "</h2>");
-                        //out.println("<h1 class=\"panel-title\">" +"Rang: " + resultat.getRang() +"</h1>");
+                        //affiche l'icone
+                        if(resultat.getRang() == 1) {
+                            out.println("<div><img class=\"centerImg\" src=\"images/coupe.png\" height=\"50px\" width=\"50px\"></div>");
+                        }
+                        if(resultat.getRang() == 2 || resultat.getRang() == 3) {
+                            out.println("<div><img class=\"centerImg\" src=\"images/medaille.png\" height=\"50px\" width=\"50px\"></div>");
+                        }
+                        
+                        //affiche le rang
+                        out.println("<div><h2>" + "Rang : " + resultat.getRang() + "</h2></div>");
+                        
                     } else {
                         out.println("<h2 class=\"panel-title\">" + "</h2>");
                     }
 
                     //affiche user
                     out.println("<h3><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> User : " + resultat.getUser() + "</h3>");
-
+                    
+                    //affiche points
                     out.println("</div>");
                     out.println("<div class=\"panel-body\">");
-                    out.println("<h3>" + " Points:" + resultat.getPoints() + "</h3>");
+                    out.println("<h3>" + " Points : " + resultat.getPoints() + "</h3>");
                     out.println("</div></div></div>");
                 }
             }
         %>
-        
-        <div class="row col-md-12">
-          <div>
-            <h3><font color="White">Pour augmenter votre score:</font></h3>
-            <p><font color="White">Créer une personne</font><p>
-            <p><font color="White">Modifier une personne</font><p>
+
+        <div class="row col-md-12 infoScore">
+            <div>
+                <h3 class="titreInfoScore">Pour augmenter votre score, vous pouvez...</h3>
+                <div class="infoScore">
+                    <div class="col-md-3">
+                        <p>Créer une personne<p>
+                    </div>  
+                    <div class="col-md-9">
+                        <p>5 points<p>
+                    </div>
+                    <div class="col-md-3">
+                        <p>Modifier une personne<p>
+                    </div>  
+                    <div class="col-md-9">
+                        <p>2 points<p>
+                    </div>
+                </div>
+            </div>
         </div>
-       </div>
 
     </body>
 </html>
