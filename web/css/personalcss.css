@@ -116,3 +116,8 @@ table{
   border-right: 5px solid transparent;
   border-top: 5px solid black;
 }
+
+.menu-bar{
+    background-color: transparent;
+    background: url("images/fond.jpg");
+}
