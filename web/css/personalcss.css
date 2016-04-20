@@ -117,7 +117,10 @@ table{
   border-top: 5px solid black;
 }
 
-.menu-bar{
-    background-color: transparent;
-    background: url("images/fond.jpg");
+.center-block {
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }

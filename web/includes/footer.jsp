@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-4">
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 center-block">
                 <p id="userConnecte"><% out.println("Utilisateur connecté: " + request.getSession().getAttribute("username").toString());%></p>
             </div>
         </div>
