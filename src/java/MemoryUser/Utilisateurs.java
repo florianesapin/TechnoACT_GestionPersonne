@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * @author francill, Stéphane Grangier
- */
+*
+* @author francill, Stéphane Grangier
+*/
 public class Utilisateurs {
 
     public static Hashtable<String, String> users = null;

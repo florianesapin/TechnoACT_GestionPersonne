@@ -2,9 +2,9 @@
 package MemoryUser;
 
 /**
- *
- * @author stephane.grangier
- */
+*
+* @author stephane.grangier
+*/
 public class Resultat implements Comparable<Resultat>{
 
     private String user;

@@ -28,7 +28,7 @@
 
         <% String username = request.getSession(true).getAttribute("username").toString();
             List<Resultat> podium = Utilisateurs.getPodium(username);
-
+            
             if (podium != null) {
                 for (Resultat resultat : podium) {
                     out.println("<div class=\"col-sm-4\">");
@@ -56,7 +56,7 @@
                         out.println("<div><h2>" + "Rang : " + resultat.getRang() + "</h2></div>");
                         
                     } else {
-                        //out.println("<h2 class=\"panel-title\">" + "</h2>");
+                        out.println("<h2 class=\"panel-title\">" + "</h2>");
                     }
 
                     //affiche user
