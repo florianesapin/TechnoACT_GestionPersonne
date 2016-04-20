@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package MemoryUser;
 
 /**
@@ -11,9 +7,9 @@ package MemoryUser;
  */
 public class Resultat implements Comparable<Resultat>{
 
-    String user;
-    Integer points;
-    Integer rang;
+    private String user;
+    private Integer points;
+    private Integer rang;
 
     public Resultat(String user, Integer points) {
         this.user = user;

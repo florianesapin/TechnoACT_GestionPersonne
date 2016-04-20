@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package MemoryUser;
 
 import java.util.Collections;
@@ -26,7 +23,7 @@ public class Utilisateurs {
             users.put("daucourt", "pdaucourt");
             users.put("francillon", "pfrancillon");
             users.put("dupont", "pdupont");
-            users.put("t", "t");
+            users.put("test", "test");
 
             initilisationScores();
         }
@@ -50,7 +47,7 @@ public class Utilisateurs {
             scores.put("daucourt", 50);
             scores.put("francillon", 55);
             scores.put("dupont", 60);
-            scores.put("t", 12);
+            scores.put("test", 12);
         }
     }
 
@@ -90,11 +87,12 @@ public class Utilisateurs {
             podium.add(classement.get(i));
 
             //tester si l'utilisateur est dans les 3 premiers
-            if (classement.get(i).user.equals(userConnecte)) {
+            if (classement.get(i).getUser().equals(userConnecte)) {
                 userTrouve = true;
             }
         }
-
+           
+        //si l'utilisateur n'est pas dans les 3 premiers, on l'ajoute
         if (!userTrouve) {
             for (Resultat resultat : classement) {
                 if (resultat.getUser().equals(userConnecte)) {
@@ -107,48 +105,5 @@ public class Utilisateurs {
 
     }
 
-    //a effacer (pour test)
-    public static void main(String args[]) {
-        Utilisateurs test = new Utilisateurs();
-        test.run();
-
-    }
-
-    //a effacer (pour test)
-    public void run() {
-        //initialise les utilisateurs
-        boolean a = verifyUser("user", "pw");
-
-        //test du classement général
-        System.out.println("---classement---");
-        List<Resultat> classement = getClassementGeneral();
-        for (Resultat resultat : classement) {
-            System.out.println("Rang:" + resultat.rang
-                    + " User:" + resultat.user
-                    + " Points:" + resultat.points);
-        }
-
-        //test podium (user hors 3 meilleurs)
-        String userConnecte = "t";
-
-        System.out.println("---PODIUM---");
-        List<Resultat> podium = getPodium(userConnecte);
-        for (Resultat resultat : podium) {
-            System.out.println("Rang:" + resultat.rang
-                    + " User:" + resultat.user
-                    + " Points:" + resultat.points);
-        }
-
-        //test podium (user 3 meilleurs)
-        userConnecte = "daucourt";
-
-        System.out.println("---PODIUM---");
-        List<Resultat> podium2 = getPodium(userConnecte);
-        for (Resultat resultat : podium2) {
-            System.out.println("Rang:" + resultat.rang
-                    + " User:" + resultat.user
-                    + " Points:" + resultat.points);
-        }
-    }
 
 }
