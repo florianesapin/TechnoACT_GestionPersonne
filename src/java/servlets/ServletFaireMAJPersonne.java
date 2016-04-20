@@ -5,6 +5,7 @@ package servlets;
  * and open the template in the editor.
  */
 import DAO.PersonneDAO;
+import MemoryUser.Utilisateurs;
 import Model.Personne;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,7 +49,9 @@ public class ServletFaireMAJPersonne extends HttpServlet {
 
                 pdao.update(p);
                 
-
+                // cumul des points
+                Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 2);
+                
             }
             
                 String result = "maj_suc";

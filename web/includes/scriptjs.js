@@ -18,14 +18,15 @@
   	  // Un picto flèche, et deux variable data-*
   	  // - Le sens du tri (0 ou 1)
   	  // - Le numéro de la colonne
-      [].forEach.call( oEntete.querySelectorAll("th"), function(oTh) {
+      //[].forEach.call( oEntete.querySelectorAll("th"), function(oTh) {
+      [].forEach.call( oEntete.getElementsByClassName("thtri"), function(oTh) {
         oTh.addEventListener("click", twTriTableau, false);
         oTh.setAttribute("data-pos", nI);
         if(oTh.getAttribute("data-tri")==="1") {
-         oTh.innerHTML += "<span class=\"flecheDesc\"></span>";
+         oTh.innerHTML = "<span class=\"flecheDesc\"></span>" + oTh.innerHTML;
         } else {
           oTh.setAttribute("data-tri", "0");
-          oTh.innerHTML += "<span class=\"flecheAsc\"></span>";
+          oTh.innerHTML = "<span class=\"flecheAsc\"></span>" + oTh.innerHTML;
         }
         // Tri par défaut
         if (oTh.className==="selection") {
@@ -95,5 +96,44 @@
     // assigne les lignes au tableau
     oTbody.innerHTML = "<tr>"+aColonne.join("</tr><tr>")+"</tr>";
   }
+  
+//Permet de trier le tableau
+ $(document).ready(function(){
+    $(function(){
+        $("#tablePersonne").tablesorter();
+    });
+});
+
+
+//Permet de filtrer
+$(document).ready(function () {
+    (function ($) {
+        $('#filter').keyup(function () {
+        var rex = new RegExp($(this).val(), 'i');
+        $('.searchable tr').hide();
+        $('.searchable tr').filter(function () {
+        return rex.test($(this).text());
+        }).show();
+    })
+    }(jQuery));
+});
+
+function masqueCreer(){
+    document.getElementById('maj').style.visibility = 'visible';
+    document.getElementById('creer').style.visibility = 'hidden';
+}
+
+function masqueMAJ(){
+    document.getElementById('maj').style.visibility = 'hidden';
+    document.getElementById('rechercher').style.visibility = 'visible';
+    document.getElementById('creer').style.visibility = 'visible';
+}
+
+
+window.setTimeout(function () {
+    $(".alert_disparition").fadeTo(500, 0).slideUp(500, function () {
+    $(this).remove();
+    });
+}, 4000);
 
 

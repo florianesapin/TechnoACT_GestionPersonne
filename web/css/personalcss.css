@@ -101,7 +101,7 @@ table{
 .flecheDesc {
   width: 0; 
   height: 0; 
-  float:right;
+  float:left;
   margin: 10px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
@@ -110,7 +110,7 @@ table{
 .flecheAsc {
   width: 0; 
   height: 0;
-  float:right;
+  float:left;
   margin: 10px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
@@ -124,3 +124,11 @@ table{
   margin-right: auto;
   text-align: center;
 }
+#divfilter{
+margin-top: 25px;
+width: 500px;
+margin-left: 600px;
+position: absolute;
+}
+
+
