@@ -22,9 +22,15 @@
 
         <%@ include file="includes/menu.html" %>
 
-        <div class="page-header panel-default">
-            <h1><font color="White">Score - Gestion personne</font></h1>
+        <br/>
+
+        <div>
+            <center>
+                <img src="images/score2.png" height="70px" width="460">
+            </center>
         </div>
+        <br/>
+        <br/>
 
         <% String username = request.getSession(true).getAttribute("username").toString();
             List<Resultat> podium = Utilisateurs.getPodium(username);
