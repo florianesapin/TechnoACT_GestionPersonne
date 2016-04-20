@@ -124,3 +124,23 @@ table{
   margin-right: auto;
   text-align: center;
 }
+
+.infoScore{
+    margin-left: 5px;
+    margin-right: 20px;  
+    color: white;
+}
+
+.titreInfoScore{
+    color: white;
+}
+
+.infoScore{
+    font-size: 18px;
+}
+
+.centerImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
