@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : floriane.sapin
 */
 /* ajout d'une marge avec le bord de la page' */
-.panel-default{
+.panel-default {
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -146,5 +146,10 @@ position: absolute;
 .centerImg{
     display: block;
     margin-left: auto;
-    margin-right: auto 
+    margin-right: auto;
+}
+
+
+#titleListe{
+    margin-left: 10px;
 }

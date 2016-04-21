@@ -32,6 +32,7 @@ public class ServletFaireMAJPersonne extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String id = null, nom = null, prenom = null, adresse = null, ville = null;
+        String result;
         
         try {
             if (HtmlHttpUtils.isAuthenticate(request)) {
@@ -42,6 +43,8 @@ public class ServletFaireMAJPersonne extends HttpServlet {
                 prenom = request.getParameter("prenom");
                 adresse = request.getParameter("adresse");
                 ville = request.getParameter("ville");
+                
+                if (!nom.equals("") && !prenom.equals("") && !adresse.equals("") && !ville.equals("")) {
 
                 Personne p = new Personne(Long.parseLong(id), nom, prenom, adresse, ville);
 
@@ -49,14 +52,40 @@ public class ServletFaireMAJPersonne extends HttpServlet {
 
                 pdao.update(p);
                 
+                
                 // cumul des points
                 Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 2);
                 
-            }
-            
-                String result = "maj_suc";
+                                            
+                result = "maj_suc";
                 request.setAttribute("result", result);
                 request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
+                
+                } else{
+                    
+                        if (nom.equals("")){
+                            result = "maj_fail_nom";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);  
+                        }
+                        if (prenom.equals("")){
+                            result = "maj_fail_prenom";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+                        if (adresse.equals("")){
+                            result = "maj_fail_adresse";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+                        if (ville.equals("")){
+                            result = "maj_fail_ville";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+                }
+                
+            }
 
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
         } finally {
