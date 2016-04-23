@@ -118,12 +118,14 @@ $(document).ready(function () {
 function masqueCreer(){
     document.getElementById('maj').style.visibility = 'visible';
     document.getElementById('creer').style.visibility = 'hidden';
+    
 }
 
 function masqueMAJ(){
     document.getElementById('maj').style.visibility = 'hidden';
     document.getElementById('rechercher').style.visibility = 'visible';
     document.getElementById('creer').style.visibility = 'visible';
+     
 }
 
 

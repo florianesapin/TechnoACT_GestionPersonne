@@ -17,7 +17,7 @@
     </head>
 
 
-    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%}else{%> masqueMAJ()<%}%>">
+    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%}else{%> masqueMAJ() <%}%>">
        
         <%@ include file="includes/menu.html" %>
         
@@ -26,8 +26,7 @@
             masqueCreer();
         </script>
         <%}%>
-
-
+       
 
         <%-- Les différentes alertes affichées --%>
         <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
@@ -138,9 +137,17 @@
         <% if (request.getAttribute("personneASupprimer") != null) {
                 Personne p = (Personne) request.getAttribute("personneASupprimer");%>
         <div class="alert alert-warning" id="popup" role="alert">
-
-            <strong>Warning! </strong> <p>Voulez-vous vraiment supprimer la personne <%out.println(p.getNom());%> <%out.println(p.getPrenom());%></p>
-            <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'><p id="confirmSupprYes">Oui</p></a><a id="confirmSupprNo" href='gestionPersonne.jsp'><p id="confirmSupprYes">Non</p></a>
+            <div class="row">
+                <div class="col-md-10">
+                    <strong>Warning! </strong> <p>Voulez-vous vraiment supprimer la personne <%out.println(p.getNom());%> <%out.println(p.getPrenom());%></p>    
+                </div>
+                <div class="col-md-1">
+                    <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'> <p id="confirmSupprYes">Oui</p></a>   
+                </div>
+                <div class="col-md-1">
+                    <a id="confirmSupprNo" href='gestionPersonne.jsp'><p id="confirmSupprYes">Non</p></a>   
+                </div>
+            </div>
         </div> <%
             }%>
 
@@ -159,7 +166,7 @@
                 <h1> Personne </h1> 
                 
 
-                <form method="POST" action="ServletListePersonne">
+                <form id="formliste" method="POST" action="ServletListePersonne">
 
                     <input class="form-control" type="hidden" id="inputId" name="id" value =<%if (personneAModifier.getId() != null) {
                             out.println(personneAModifier.getId());
@@ -241,7 +248,7 @@
                     </thead>
 
                     <tbody class="searchable">
-                    <% if (request.getAttribute("personnes") != null) {
+                        <% if (request.getAttribute("personnes") != null) {
                             Vector<Personne> personnes = (Vector<Personne>) request.getAttribute("personnes");
                             for (int i = 0; i < personnes.size(); i++) {
                                 Personne p = personnes.elementAt(i);
