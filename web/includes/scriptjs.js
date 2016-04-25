@@ -5,100 +5,107 @@
  */
 
 
-  // Tri dynamique de tableau HTML
-  // Auteur : Copyright © 2015 - Django Blais
-  // Source : http://trucsweb.com/tutoriels/Javascript/tableau-tri/
-  // Modifier et adpaté par nos soins!
-  // Sous licence du MIT.
-  function twInitTableau() {
+// Tri dynamique de tableau HTML
+// Auteur : Copyright © 2015 - Django Blais
+// Source : http://trucsweb.com/tutoriels/Javascript/tableau-tri/
+// Modifier et adpaté par nos soins!
+// Sous licence du MIT.
+function twInitTableau() {
     // Initialise chaque tableau de classe « avectri »
-       [].forEach.call( document.getElementsByClassName("avectri"), function(oTableau) {
-       var oEntete = oTableau.getElementsByTagName("tr")[0];
-       var nI = 1;
-  	  // Ajoute à chaque entête (th) la capture du clic
-  	  // Un picto flèche, et deux variable data-*
-  	  // - Le sens du tri (0 ou 1)
-  	  // - Le numéro de la colonne
+    [].forEach.call(document.getElementsByClassName("avectri"), function (oTableau) {
+        var oEntete = oTableau.getElementsByTagName("tr")[0];
+        var nI = 1;
+        // Ajoute à chaque entête (th) la capture du clic
+        // Un picto flèche, et deux variable data-*
+        // - Le sens du tri (0 ou 1)
+        // - Le numéro de la colonne
 
-      [].forEach.call( oEntete.getElementsByClassName("thtri"), function(oTh) {
-        oTh.addEventListener("click", twTriTableau, false);
-        oTh.setAttribute("data-pos", nI);
-        if(oTh.getAttribute("data-tri")==="1") {
-         oTh.innerHTML = "<span class=\"flecheDesc\"></span>" + oTh.innerHTML;
-        } else {
-          oTh.setAttribute("data-tri", "0");
-          oTh.innerHTML = "<span class=\"flecheAsc\"></span>" + oTh.innerHTML;
-        }
-        // Tri par défaut
-        if (oTh.className==="selection") {
-          oTh.click();
-        }
-        nI++;
-      });
+        [].forEach.call(oEntete.getElementsByClassName("thtri"), function (oTh) {
+            oTh.addEventListener("click", twTriTableau, false);
+            oTh.setAttribute("data-pos", nI);
+            if (oTh.getAttribute("data-tri") === "1") {
+                oTh.innerHTML = "<span class=\"flecheDesc\"></span>" + oTh.innerHTML;
+            } else {
+                oTh.setAttribute("data-tri", "0");
+                oTh.innerHTML = "<span class=\"flecheAsc\"></span>" + oTh.innerHTML;
+            }
+            // Tri par défaut
+            if (oTh.className === "selection") {
+                oTh.click();
+            }
+            nI++;
+        });
     });
-  }
-  
-  function twInit() {
-    twInitTableau();
-  }
-  function twPret(maFonction) {
-    if (document.readyState !== "loading"){
-      maFonction();
-    } else {
-      document.addEventListener("DOMContentLoaded", maFonction);
-    }
-  }
-  
-  twPret(twInit);
+}
 
-  function twTriTableau() {
+function twInit() {
+    twInitTableau();
+}
+function twPret(maFonction) {
+    if (document.readyState !== "loading") {
+        maFonction();
+    } else {
+        document.addEventListener("DOMContentLoaded", maFonction);
+    }
+}
+
+twPret(twInit);
+
+function twTriTableau() {
     // Ajuste le tri
     var nBoolDir = this.getAttribute("data-tri");
-    this.setAttribute("data-tri", (nBoolDir==="0") ? "1" : "0");
+    this.setAttribute("data-tri", (nBoolDir === "0") ? "1" : "0");
     // Supprime la classe « selection » de chaque colonne.
-    [].forEach.call( this.parentNode.querySelectorAll("th"), function(oTh) {oTh.classList.remove("selection");});
+    [].forEach.call(this.parentNode.querySelectorAll("th"), function (oTh) {
+        oTh.classList.remove("selection");
+    });
     // Ajoute la classe « selection » à la colonne cliquée.
     this.className = "selection";
     // Ajuste la flèche
-    this.querySelector("span").className = (nBoolDir==="0") ? "flecheAsc" : "flecheDesc";
+    this.querySelector("span").className = (nBoolDir === "0") ? "flecheAsc" : "flecheDesc";
 
     // Construit la matrice
     // Récupère le tableau (tbody)
-    var oTbody = this.parentNode.parentNode.parentNode.getElementsByTagName("tbody")[0]; 
+    var oTbody = this.parentNode.parentNode.parentNode.getElementsByTagName("tbody")[0];
     var oLigne = oTbody.rows;
     var nNbrLigne = oLigne.length;
     var aColonne = new Array(), i, j, oCel;
-    for(i = 0; i < nNbrLigne; i++) {
-      oCel = oLigne[i].cells;
-      aColonne[i] = new Array();
-      for(j = 0; j < oCel.length; j++){
-        aColonne[i][j] = oCel[j].innerHTML;
-      }
+    for (i = 0; i < nNbrLigne; i++) {
+        oCel = oLigne[i].cells;
+        aColonne[i] = new Array();
+        for (j = 0; j < oCel.length; j++) {
+            aColonne[i][j] = oCel[j].innerHTML;
+        }
     }
 
     // Trier la matrice (array)
     // Récupère le numéro de la colonne
     var nIndex = this.getAttribute("data-pos");
     // Récupère le type de tri (numérique ou par défaut « local »)
-    var sFonctionTri = (this.getAttribute("data-type")==="num") ? "compareNombres" : "compareLocale";
+    var sFonctionTri = (this.getAttribute("data-type") === "num") ? "compareNombres" : "compareLocale";
     // Tri
     aColonne.sort(eval(sFonctionTri));
     // Tri numérique
-    function compareNombres(a, b) {return a[nIndex-1] - b[nIndex-1];}
+    function compareNombres(a, b) {
+        return a[nIndex - 1] - b[nIndex - 1];
+    }
     // Tri local (pour support utf-8)
-    function compareLocale(a, b) {return a[nIndex-1].localeCompare(b[nIndex-1]);}
+    function compareLocale(a, b) {
+        return a[nIndex - 1].localeCompare(b[nIndex - 1]);
+    }
     // Renverse la matrice dans le cas d’un tri descendant
-    if (nBoolDir==="0") aColonne.reverse();
-    
+    if (nBoolDir === "0")
+        aColonne.reverse();
+
     // Construit les colonne du nouveau tableau
-    for(i = 0; i < nNbrLigne; i++){
-      aColonne[i] = "<td>"+aColonne[i].join("</td><td>")+"</td>";
+    for (i = 0; i < nNbrLigne; i++) {
+        aColonne[i] = "<td>" + aColonne[i].join("</td><td>") + "</td>";
     }
 
     // assigne les lignes au tableau
-    oTbody.innerHTML = "<tr>"+aColonne.join("</tr><tr>")+"</tr>";
-  }
-  
+    oTbody.innerHTML = "<tr>" + aColonne.join("</tr><tr>") + "</tr>";
+}
+
 
 
 
@@ -106,32 +113,32 @@
 $(document).ready(function () {
     (function ($) {
         $('#filter').keyup(function () {
-        var rex = new RegExp($(this).val(), 'i');
-        $('.searchable tr').hide();
-        $('.searchable tr').filter(function () {
-        return rex.test($(this).text());
-        }).show();
-    })
+            var rex = new RegExp($(this).val(), 'i');
+            $('.searchable tr').hide();
+            $('.searchable tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+        })
     }(jQuery));
 });
 
-function masqueCreer(){
+function masqueCreer() {
     document.getElementById('maj').style.visibility = 'visible';
     document.getElementById('creer').style.visibility = 'hidden';
-    
+
 }
 
-function masqueMAJ(){
+function masqueMAJ() {
     document.getElementById('maj').style.visibility = 'hidden';
     document.getElementById('rechercher').style.visibility = 'visible';
     document.getElementById('creer').style.visibility = 'visible';
-     
+
 }
 
 
 window.setTimeout(function () {
     $(".alert_disparition").fadeTo(500, 0).slideUp(500, function () {
-    $(this).remove();
+        $(this).remove();
     });
 }, 4000);
 

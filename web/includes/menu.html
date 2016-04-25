@@ -7,12 +7,11 @@ and open the template in the editor.
 
 <script>
     $(document).ready(function () {
-        $("nav a").click(function () {
-            $("nav a").find(".active").removeClass("active");
+        $("nav div div div div a").click(function () {
+            $("nav div div div a").find(".active").removeClass("active");
             $(this).addClass("active");
         });
     });
-
 
 </script>
 
@@ -30,7 +29,7 @@ and open the template in the editor.
             </div>
             <div class="col-md-4 center-block">
                 <div class="center-block">
-                    <a class="navbar-brand" href="score.jsp">
+                    <a class="navbar-brand active" href="score.jsp">
                         <p id="menu"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 
                             Votre score</p>
                     </a>

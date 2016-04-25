@@ -20,8 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletCreationPersonne extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -29,7 +31,7 @@ public class ServletCreationPersonne extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String nom = null, prenom = null, adresse = null, ville = null;
@@ -49,44 +51,42 @@ public class ServletCreationPersonne extends HttpServlet {
                         // Floriane: check DAO
                         Long id = p.create(new Personne(nom, prenom, adresse, ville));
                         out.println("<p>" + id + "/" + nom + "/" + prenom + "/" + adresse + "/" + ville + "</p>");
-                                                
-                        
+
                         result = "ajout_suc";
                         request.setAttribute("result", result);
                         request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
-                        
-                                            // cumul des points
+
+                        // cumul des points
                         Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 5);
 
-
                     } else {
-                        if (nom.equals("")){
+                        if (nom.equals("")) {
                             result = "ajout_fail_nom";
                             request.setAttribute("result", result);
-                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);  
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                         }
-                        if (prenom.equals("")){
+                        if (prenom.equals("")) {
                             result = "ajout_fail_prenom";
                             request.setAttribute("result", result);
-                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                         }
-                        if (adresse.equals("")){
+                        if (adresse.equals("")) {
                             result = "ajout_fail_adresse";
                             request.setAttribute("result", result);
-                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                         }
-                        if (ville.equals("")){
+                        if (ville.equals("")) {
                             result = "ajout_fail_ville";
                             request.setAttribute("result", result);
-                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                         }
 
                     }
                 }
-                
+
 
                 /* TODO output your page here
-                out.println("<h1>Servlet ServletCreationPersonne at " + request.getContextPath () + "</h1>");
+                 out.println("<h1>Servlet ServletCreationPersonne at " + request.getContextPath () + "</h1>");
                  */
             }
             HtmlHttpUtils.doFooter(out);
@@ -96,8 +96,9 @@ public class ServletCreationPersonne extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -109,8 +110,9 @@ public class ServletCreationPersonne extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -119,12 +121,13 @@ public class ServletCreationPersonne extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

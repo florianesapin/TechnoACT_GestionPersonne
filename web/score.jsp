@@ -34,7 +34,7 @@
 
         <% String username = request.getSession(true).getAttribute("username").toString();
             List<Resultat> podium = Utilisateurs.getPodium(username);
-            
+
             if (podium != null) {
                 for (Resultat resultat : podium) {
                     out.println("<div class=\"col-sm-4\">");
@@ -47,27 +47,26 @@
                     }
 
                     out.println("<div class=\"panel-heading\">");
-                    
-                    
+
                     if (resultat.getRang() != 0) {
                         //affiche l'icone
-                        if(resultat.getRang() == 1) {
+                        if (resultat.getRang() == 1) {
                             out.println("<div><img class=\"centerImg\" src=\"images/coupe.png\" height=\"50px\" width=\"50px\"></div>");
                         }
-                        if(resultat.getRang() == 2 || resultat.getRang() == 3) {
+                        if (resultat.getRang() == 2 || resultat.getRang() == 3) {
                             out.println("<div><img class=\"centerImg\" src=\"images/medaille.png\" height=\"50px\" width=\"50px\"></div>");
                         }
-                        
+
                         //affiche le rang
                         out.println("<div><h2>" + "Rang : " + resultat.getRang() + "</h2></div>");
-                        
+
                     } else {
                         out.println("<h2 class=\"panel-title\">" + "</h2>");
                     }
 
                     //affiche user
                     out.println("<h3><span class=\"glyphicon glyphicon-user\" aria-hidden=\"true\"></span> User : " + resultat.getUser() + "</h3>");
-                    
+
                     //affiche points
                     out.println("</div>");
                     out.println("<div class=\"panel-body\">");

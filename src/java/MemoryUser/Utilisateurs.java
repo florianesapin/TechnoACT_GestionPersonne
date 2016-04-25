@@ -1,4 +1,3 @@
-
 package MemoryUser;
 
 import java.util.Collections;
@@ -8,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
-*
-* @author francill, Stéphane Grangier
-*/
+ *
+ * @author francill, Stéphane Grangier
+ */
 public class Utilisateurs {
 
     public static Hashtable<String, String> users = null;
@@ -91,7 +90,7 @@ public class Utilisateurs {
                 userTrouve = true;
             }
         }
-           
+
         //si l'utilisateur n'est pas dans les 3 premiers, on l'ajoute
         if (!userTrouve) {
             for (Resultat resultat : classement) {
@@ -104,6 +103,5 @@ public class Utilisateurs {
         return podium;
 
     }
-
 
 }

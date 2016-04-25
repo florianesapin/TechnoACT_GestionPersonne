@@ -17,16 +17,17 @@
     </head>
 
 
-    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%}else{%> masqueMAJ() <%}%>">
-       
+    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%} else {%> masqueMAJ() <%}%>">
+
         <%@ include file="includes/menu.html" %>
-        
+
+
         <% if ((String) request.getAttribute("result") == "BeforeMAJ") {%>
         <script type="text/javascript">
-            masqueCreer();
+        masqueCreer();
         </script>
         <%}%>
-       
+
 
         <%-- Les différentes alertes affichées --%>
         <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
@@ -35,41 +36,41 @@
             <strong>Succès! </strong>La personne à été créée avec succès
         </div> <%
             }%>
-            
+
         <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Bravo! </strong>Vous venez de cumuler 5 points supplémentaires !
         </div> <%
             }%>
-            
+
         <% if ((String) request.getAttribute("result") == "ajout_fail_nom") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans le nom de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "ajout_fail_adresse") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans l'adresse de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "ajout_fail_prenom") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans le prénom de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "ajout_fail_ville") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans saisir la ville de la personne
         </div><%
-        }%>
+            }%>
 
         <% if ((String) request.getAttribute("result") == "suppr_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">
@@ -98,41 +99,41 @@
             <strong>Success! </strong>La personne à été mise à jour avec succèss.
         </div> <%
             }%>
-            
+
         <% if ((String) request.getAttribute("result") == "maj_suc") {%>
         <div class="alert_disparition alert alert-success" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Bravo! </strong>Vous venez de cumuler 2 points supplémentaires !
         </div> <%
             }%>
-            
+
         <% if ((String) request.getAttribute("result") == "maj_fail_ville") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir la ville de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "maj_fail_nom") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir le nom de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "maj_fail_adresse") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir l'adresse de la personne
         </div><%
-        }%>
-        
+            }%>
+
         <% if ((String) request.getAttribute("result") == "maj_fail_prenom") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
             <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir l'adresse de la personne
         </div><%
-        }%>
+            }%>
 
         <% if (request.getAttribute("personneASupprimer") != null) {
                 Personne p = (Personne) request.getAttribute("personneASupprimer");%>
@@ -161,10 +162,10 @@
 
 
         <div class="panel panel-default">
-           
+
             <div class="panel-body">
                 <h1> Personne </h1> 
-                
+
 
                 <form id="formliste" method="POST" action="ServletListePersonne">
 
@@ -226,36 +227,36 @@
                     <h1 id="titleListe"> Liste des personnes </h1> 
                 </div>
                 <div class=" input-group col-xs-12 col-md-8">  
-                    
+
                     <div id="divfilter">
-                    <input  id="filter" type="text" class="form-control" placeholder="Tapez votre filtre..."></input> 
+                        <input  id="filter" type="text" class="form-control" placeholder="Tapez votre filtre..."></input> 
                     </div>
                 </div>
             </div>
-        
+
             <div class="panel-body">
 
                 <table id="tablePersonne" class="table table-striped avectri">
                     <thead>
-                    <tr>
-                        <th class="thtri"><p>Nom</p></th>
-                        <th class="thtri"><p>Prenom</p></th>
-                        <th class="thtri"><p>Adresse</p></th>
-                        <th class="thtri"><p>Ville</p></th>
-                        <th></th>
-                        <th></th>
+                        <tr>
+                            <th class="thtri"><p>Nom</p></th>
+                    <th class="thtri"><p>Prenom</p></th>
+                    <th class="thtri"><p>Adresse</p></th>
+                    <th class="thtri"><p>Ville</p></th>
+                    <th></th>
+                    <th></th>
                     </tr>
                     </thead>
 
                     <tbody class="searchable">
                         <% if (request.getAttribute("personnes") != null) {
-                            Vector<Personne> personnes = (Vector<Personne>) request.getAttribute("personnes");
-                            for (int i = 0; i < personnes.size(); i++) {
-                                Personne p = personnes.elementAt(i);
+                                Vector<Personne> personnes = (Vector<Personne>) request.getAttribute("personnes");
+                                for (int i = 0; i < personnes.size(); i++) {
+                                    Personne p = personnes.elementAt(i);
 
-                                out.println("<tr><td>" + p.getNom() + "</td><td>" + p.getPrenom() + "</td><td>" + p.getAdresse() + "</td><td>" + p.getVille() + "</td><td><form method=\"POST\" action=\"ServletMAJPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-info btn-xs\" id=\"edition\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></button></form></td><td><form method=\"POST\" action=\"ServletEffacerPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-danger btn-xs\" id=\"supprimer\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button></form></td></tr>");
-                            }
-                        }%>
+                                    out.println("<tr><td>" + p.getNom() + "</td><td>" + p.getPrenom() + "</td><td>" + p.getAdresse() + "</td><td>" + p.getVille() + "</td><td><form method=\"POST\" action=\"ServletMAJPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-info btn-xs\" id=\"edition\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></button></form></td><td><form method=\"POST\" action=\"ServletEffacerPersonne\"><input type=\"hidden\" id=\"inputId\" name=\"id\" value=\"" + p.getId() + "\"><button type=\"submit\" class=\"btn btn-danger btn-xs\" id=\"supprimer\" onClick=\"modification()\"><span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span></button></form></td></tr>");
+                                }
+                            }%>
                     </tbody>
                     </form>
                 </table>

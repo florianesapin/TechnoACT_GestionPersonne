@@ -1,11 +1,10 @@
-
 package MemoryUser;
 
 /**
-*
-* @author stephane.grangier
-*/
-public class Resultat implements Comparable<Resultat>{
+ *
+ * @author stephane.grangier
+ */
+public class Resultat implements Comparable<Resultat> {
 
     private String user;
     private Integer points;
@@ -43,7 +42,7 @@ public class Resultat implements Comparable<Resultat>{
     }
 
     public int compareTo(Resultat o) {
-       
+
         if (this.points < o.points) {
             return -1;
         } else if (this.points > o.points) {

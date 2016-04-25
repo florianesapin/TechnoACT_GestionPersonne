@@ -20,8 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletMAJPersonne extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -44,7 +46,7 @@ public class ServletMAJPersonne extends HttpServlet {
 
                         Vector<Personne> v = pdao.research(new Personne(idl, null, null, null, null));
                         Personne p = null;
-;
+                        ;
 
                         for (int i = 0; i < v.size(); i++) {//UN SEULEMENT
                             p = v.elementAt(i);
@@ -62,7 +64,7 @@ public class ServletMAJPersonne extends HttpServlet {
                         String result;
                         result = "BeforeMAJ";
                         request.setAttribute("result", result);
-                        request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);  
+                        request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
                     }
                 }
             }
@@ -74,8 +76,9 @@ public class ServletMAJPersonne extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -87,8 +90,9 @@ public class ServletMAJPersonne extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -100,8 +104,9 @@ public class ServletMAJPersonne extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

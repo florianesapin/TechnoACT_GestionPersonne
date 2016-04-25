@@ -78,7 +78,7 @@
                         $(".effect").effect("shake");
                     </script>
                     <%
-                            }%>
+                        }%>
                 </div>
             </div>
 
