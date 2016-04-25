@@ -44,7 +44,7 @@ public class ServletCreationPersonne extends HttpServlet {
                 String result;
 
                 if (nom != null && prenom != null) {
-                    if (!nom.equals("") && !prenom.equals("")) {
+                    if (!nom.equals("") && !prenom.equals("") && !adresse.equals("") && !ville.equals("")) {
                         PersonneDAO p = new PersonneDAO();
                         // Floriane: check DAO
                         Long id = p.create(new Personne(nom, prenom, adresse, ville));
@@ -54,18 +54,37 @@ public class ServletCreationPersonne extends HttpServlet {
                         result = "ajout_suc";
                         request.setAttribute("result", result);
                         request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
+                        
+                                            // cumul des points
+                        Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 5);
 
 
                     } else {
-                        out.println("<p>nom et prenom ne doivent pas etre null !!</p>");
-                        result = "ajout_fail";
-                        request.setAttribute("result", result);
-                        request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);
+                        if (nom.equals("")){
+                            result = "ajout_fail_nom";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);  
+                        }
+                        if (prenom.equals("")){
+                            result = "ajout_fail_prenom";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+                        if (adresse.equals("")){
+                            result = "ajout_fail_adresse";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+                        if (ville.equals("")){
+                            result = "ajout_fail_ville";
+                            request.setAttribute("result", result);
+                            request.getRequestDispatcher("gestionPersonne.jsp").forward(request, response);                             
+                        }
+
                     }
                 }
                 
-                    // cumul des points
-                    Utilisateurs.modifieScore((String) request.getSession(false).getAttribute("username"), 5);
+
                 /* TODO output your page here
                 out.println("<h1>Servlet ServletCreationPersonne at " + request.getContextPath () + "</h1>");
                  */

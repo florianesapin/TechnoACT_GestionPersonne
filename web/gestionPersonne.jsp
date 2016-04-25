@@ -17,7 +17,7 @@
     </head>
 
 
-    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%}else{%> masqueMAJ()<%}%>">
+    <body onLoad="<%if ((String) request.getAttribute("result") == "BeforeMAJ") {%> masqueCreer() <%}else{%> masqueMAJ() <%}%>">
        
         <%@ include file="includes/menu.html" %>
         
@@ -26,8 +26,7 @@
             masqueCreer();
         </script>
         <%}%>
-
-
+       
 
         <%-- Les différentes alertes affichées --%>
         <% if ((String) request.getAttribute("result") == "ajout_suc") {%>
@@ -44,10 +43,31 @@
         </div> <%
             }%>
             
-        <% if ((String) request.getAttribute("result") == "ajout_fail") {%>
+        <% if ((String) request.getAttribute("result") == "ajout_fail_nom") {%>
         <div class="alert_disparition alert alert-danger" id="popup" role="alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
-            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans prénom ni nom
+            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans le nom de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "ajout_fail_adresse") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans l'adresse de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "ajout_fail_prenom") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans le prénom de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "ajout_fail_ville") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas ajouter sans saisir la ville de la personne
         </div><%
         }%>
 
@@ -85,13 +105,49 @@
             <strong>Bravo! </strong>Vous venez de cumuler 2 points supplémentaires !
         </div> <%
             }%>
+            
+        <% if ((String) request.getAttribute("result") == "maj_fail_ville") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir la ville de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "maj_fail_nom") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir le nom de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "maj_fail_adresse") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir l'adresse de la personne
+        </div><%
+        }%>
+        
+        <% if ((String) request.getAttribute("result") == "maj_fail_prenom") {%>
+        <div class="alert_disparition alert alert-danger" id="popup" role="alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Erreur! </strong> Vous ne pouvez pas mettre à jour sans saisir l'adresse de la personne
+        </div><%
+        }%>
 
         <% if (request.getAttribute("personneASupprimer") != null) {
                 Personne p = (Personne) request.getAttribute("personneASupprimer");%>
         <div class="alert alert-warning" id="popup" role="alert">
-
-            <strong>Warning! </strong> <p>Voulez-vous vraiment supprimer la personne <%out.println(p.getNom());%> <%out.println(p.getPrenom());%></p>
-            <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'><p id="confirmSupprYes">Oui</p></a><a id="confirmSupprNo" href=''><p id="confirmSupprYes">Non</p></a>
+            <div class="row">
+                <div class="col-md-10">
+                    <strong>Warning! </strong> <p>Voulez-vous vraiment supprimer la personne <%out.println(p.getNom());%> <%out.println(p.getPrenom());%></p>    
+                </div>
+                <div class="col-md-1">
+                    <a href='ServletFaireEffacementPersonne?id=<%out.println(p.getId());%>'> <p id="confirmSupprYes">Oui</p></a>   
+                </div>
+                <div class="col-md-1">
+                    <a id="confirmSupprNo" href='gestionPersonne.jsp'><p id="confirmSupprYes">Non</p></a>   
+                </div>
+            </div>
         </div> <%
             }%>
 
@@ -105,12 +161,12 @@
 
 
         <div class="panel panel-default">
-            <!--<div class="panel-heading"><p> Personne</p></div>-->
+           
             <div class="panel-body">
                 <h1> Personne </h1> 
                 
 
-                <form method="POST" action="ServletListePersonne">
+                <form id="formliste" method="POST" action="ServletListePersonne">
 
                     <input class="form-control" type="hidden" id="inputId" name="id" value =<%if (personneAModifier.getId() != null) {
                             out.println(personneAModifier.getId());
@@ -166,7 +222,8 @@
 
         <div class="panel panel-default">
             <div class="row">
-                <div class="panel-heading col-xs-6 col-md-4"><h1> Liste des personnes </h1> 
+                <div class="panel-heading col-xs-6 col-md-4">
+                    <h1 id="titleListe"> Liste des personnes </h1> 
                 </div>
                 <div class=" input-group col-xs-12 col-md-8">  
                     
@@ -175,7 +232,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
             <div class="panel-body">
 
                 <table id="tablePersonne" class="table table-striped avectri">
@@ -191,7 +248,7 @@
                     </thead>
 
                     <tbody class="searchable">
-                    <% if (request.getAttribute("personnes") != null) {
+                        <% if (request.getAttribute("personnes") != null) {
                             Vector<Personne> personnes = (Vector<Personne>) request.getAttribute("personnes");
                             for (int i = 0; i < personnes.size(); i++) {
                                 Personne p = personnes.elementAt(i);
