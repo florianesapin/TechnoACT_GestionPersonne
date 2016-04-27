@@ -223,16 +223,17 @@
 
         <div class="panel panel-default">
             <div class="row">
-                <div class="panel-heading col-xs-6 col-md-4">
+                <div class="col-xs-7">
                     <h1 id="titleListe"> Liste des personnes </h1> 
                 </div>
-                <div class=" input-group col-xs-12 col-md-8">  
+                <div id="divfilter" class="col-xs-5">  
 
-                    <div id="divfilter">
-                        <input  id="filter" type="text" class="form-control" placeholder="Tapez votre filtre..."></input> 
-                    </div>
+
+                    <input  id="filter" type="text" class="form-control" placeholder="Tapez votre filtre..."></input> 
+
                 </div>
             </div>
+
 
             <div class="panel-body">
 
@@ -240,12 +241,12 @@
                     <thead>
                         <tr>
                             <th class="thtri"><p>Nom</p></th>
-                    <th class="thtri"><p>Prenom</p></th>
-                    <th class="thtri"><p>Adresse</p></th>
-                    <th class="thtri"><p>Ville</p></th>
-                    <th></th>
-                    <th></th>
-                    </tr>
+                            <th class="thtri"><p>Prenom</p></th>
+                            <th class="thtri"><p>Adresse</p></th>
+                            <th class="thtri"><p>Ville</p></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
                     </thead>
 
                     <tbody class="searchable">

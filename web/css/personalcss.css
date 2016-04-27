@@ -131,9 +131,8 @@ table{
 
 #divfilter{
     margin-top: 25px;
+    margin-right: 5px;
     width: 500px;
-    margin-left: 600px;
-    position: absolute;
 }
 
 .infoScore{
